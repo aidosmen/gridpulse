@@ -1,6 +1,14 @@
 # GridPulse
 
-Energy infrastructure intelligence for operations managers, energy analysts, and facility engineers. GridPulse is a fictional enterprise workspace: it monitors demand, site health, network flow, and incident response across a portfolio of synthetic facilities.
+**Live demo:** [https://soft-torrone-08049a.netlify.app/overview](https://soft-torrone-08049a.netlify.app/overview)
+
+GridPulse is an Angular 22 enterprise infrastructure monitoring demo. It is a dark, high-density operations workspace for demand, site health, network flow, and incident response across a fictional energy portfolio. Operations managers, energy analysts, and facility engineers can filter a region, inspect a site, follow an incident through its workflow, and see the same facility state on the map, badges, and topology graph.
+
+All facility, incident, and telemetry data is synthetic. No real backend is connected. The browser answers `/api/*` locally, and nothing is sent off the machine.
+
+## Screenshots
+
+This repository does not include interface screenshots. The [live demo](https://soft-torrone-08049a.netlify.app/overview) is the current production build and shows Overview, Infrastructure, Network Topology, Incidents, Analytics, and Settings.
 
 ## Stack
 
@@ -15,6 +23,16 @@ Energy infrastructure intelligence for operations managers, energy analysts, and
 - Vitest unit tests and Playwright end-to-end tests
 
 Node `^22.22.3`, `^24.15.0`, or newer is required. See `.nvmrc`.
+
+## Features
+
+- **Overview.** Demand, reserve, and alerting KPIs, a demand-against-forecast chart, and a MapLibre map of the visible facilities.
+- **Infrastructure.** Filterable site register and a facility page with assets, site-load history, open incidents, and inspection notes.
+- **Network topology.** Cytoscape graph whose flows and stress are derived from the current facility load and status.
+- **Incidents.** Acknowledge, investigate, resolve, and reopen. The incident in the URL is the one that receives the action.
+- **Analytics.** Regional energy and a side-by-side facility comparison for the selected chart horizon.
+- **Settings.** Load and health thresholds stored in this browser. A nominal or watch site that crosses a threshold is shown as degraded on badges, the map, alerting counts, and topology.
+- **Shell.** Region filter, 24h / 7d / 30d chart horizon, global search, and a responsive navigation drawer.
 
 ## Run
 
