@@ -1,6 +1,6 @@
 # GridPulse
 
-**Live demo:** [https://soft-torrone-08049a.netlify.app/overview](https://soft-torrone-08049a.netlify.app/overview)
+**Live demo:** [https://soft-torrone-08049a.netlify.app/overview](https://gridpulse-ops.netlify.app/overview)
 
 GridPulse is an Angular 22 enterprise infrastructure monitoring demo. It is a dark, high-density operations workspace for demand, site health, network flow, and incident response across a fictional energy portfolio. Operations managers, energy analysts, and facility engineers can filter a region, inspect a site, follow an incident through its workflow, and see the same facility state on the map, badges, and topology graph.
 
