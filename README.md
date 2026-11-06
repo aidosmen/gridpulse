@@ -63,6 +63,18 @@ src/app
 
 ## Deployment
 
-`npm run build` writes a static app to `dist/gridpulse/browser`. Host it with SPA fallback to `index.html`. The MapLibre worker is copied to `maplibre-gl-worker.mjs` and loaded relative to `<base href>`, so a non-root base path works. The facility map still requests the CARTO dark style and tiles; if that request fails, the overview shows a keyboard-accessible site list instead.
+`npm run build` runs the Angular production build (`ng build`; production is the default configuration). There is no server bundle. The browser `index.html` is written to `dist/gridpulse/browser`, next to the hashed scripts and styles, `favicon.svg`, `favicon.ico`, and `maplibre-gl-worker.mjs`.
+
+Netlify settings live in `netlify.toml`:
+
+- Build command: `npm run build`
+- Publish directory: `dist/gridpulse/browser`
+- Node.js `22.23.4`, the same version as `.nvmrc`
+- Every path that is not a real file rewrites to `/index.html` with status 200, so a direct visit or refresh of `/overview`, `/infrastructure`, `/infrastructure/:facilityId`, `/topology`, `/incidents`, `/analytics`, or `/settings` loads the app
+- Pretty URLs are off, so those routes are not redirected to a trailing slash
+
+`<base href="/">` matches a site deployed at the domain root. Favicons and the MapLibre worker are requested from that root (`/favicon.svg`, `/maplibre-gl-worker.mjs`). The worker response is served as `text/javascript`. The facility map still requests the CARTO dark style and tiles; if that request fails, the overview shows a keyboard-accessible site list instead.
+
+Demo mode needs no backend, environment variables, or secrets. `/api/*` is answered in the browser by `DemoBackend`. Connect this repository in Netlify and leave the build command and publish directory from `netlify.toml`.
 
 This repository is licensed under the MIT license. See `LICENSE`. Third-party packages keep their own licenses.
